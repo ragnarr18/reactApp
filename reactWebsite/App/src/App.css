@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background: rgb(82, 82, 150);
+}
+
+.nav-links {
+  width: 50%;
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  
+}
