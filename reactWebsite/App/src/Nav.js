@@ -13,6 +13,10 @@ function Nav() {
                 <Link to="/shop">
                     <li>Shop</li>
                 </Link>
+                <form action="/searchForm/">
+                <input type="text" className="searchText" ></input>
+                <input type="submit"/>
+                </form>
             </ul>
         </nav>
     );

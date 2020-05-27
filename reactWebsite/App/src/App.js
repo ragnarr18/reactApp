@@ -39,9 +39,9 @@ class App extends Component {
       <div className="App"> 
         <Nav />
         <Switch>
-        <Route path="/" exact component={Home}></Route>
-        <Route path="/about"  component={About}></Route>
-        <Route path="/shop"  component={Shop}></Route>
+          <Route path="/" exact component={Home}></Route>
+          <Route path="/about"  component={About}></Route>
+          <Route path="/shop"  component={Shop}></Route>
         </Switch>
         {/* <p className="App-intro">{this.state.apiResponse}</p> */}
       </div>
