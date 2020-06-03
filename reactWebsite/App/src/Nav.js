@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import RegionSearch from './RegionSearch';
 
-function Nav() {
+function Nav() {    
     return (
         <nav>
             <h3> Logo</h3>
@@ -13,10 +14,11 @@ function Nav() {
                 <Link to="/shop">
                     <li>Shop</li>
                 </Link>
-                <form action="/searchForm/">
-                <input type="text" className="searchText" ></input>
-                <input type="submit"/>
-                </form>
+                {/* <form action="/searchForm/">
+                <input type="text" name="searchValue" placeholder="search region"/>
+                <button>Search</button>
+                </form> */}
+                <RegionSearch></RegionSearch>
             </ul>
         </nav>
     );
