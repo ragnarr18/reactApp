@@ -11,6 +11,44 @@ router.get('/', function(req, res, next) {
       });
 });
 
+router.get('/region/:regionName', function(req, res, next){
+  console.log("this is the regionName param: " + req.params.regionName)
+                            // getRegion(req.body.region, function(regionInfo){
+      // WORKS FOR BODY//   res.send(regionInfo)                             
+                         // return;
+                            // })
+  getRegion(req.params.regionName, function(regionInfo){
+    
+    res.send(regionInfo)
+    console.log("callback successful")
+    return;
+  })
+});
+
+
+async function getRegion(regionString, callback){
+  const response = await fetch('https://api.quarantine.country/api/v1/spots/region?region=' + regionString);
+  
+  if (!response.status.ok){
+    console.log("its ok")
+    const items = await response.json()  // this is used to extract the body from the request
+    //const items = await response;
+    const dates = items.data;
+    // console.log(dates);
+    let a = JSON.stringify(dates)
+    console.log("go to callback");
+    callback(dates);
+    return
+    // console.log(response)
+  }
+  else{
+    console.log("its not ok")
+    
+    // console.log(response)
+  }
+  callback(response.status)
+}
+
 function lastGame(callback){
     var summoner = "ih8myx"
     var customRequest = {
@@ -24,7 +62,7 @@ function lastGame(callback){
   //go down "var last = lastGame(accountId....)" to see the problem
     request.get(customRequest, function (error, response, body) {
         if (response.statusCode >= 400 && response.statusCode <500){
-        msg.channel.send("league api token needs to updated for this to work")
+        //msg.channel.send("league api token needs to updated for this to work")
         return;
         }
         console.error('error:', error); // Print the error if one occurred
