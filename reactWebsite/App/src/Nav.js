@@ -14,11 +14,11 @@ function Nav() {
                 <Link to="/shop">
                     <li>Shop</li>
                 </Link>
-                {/* <form action="/searchForm/">
-                <input type="text" name="searchValue" placeholder="search region"/>
-                <button>Search</button>
-                </form> */}
+                   
+                {/* <Link to="/region"> */}
                 <RegionSearch></RegionSearch>
+                {/* </Link> */}
+                
             </ul>
         </nav>
     );

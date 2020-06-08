@@ -42,6 +42,7 @@ class App extends Component {
           <Route path="/" exact component={Home}></Route>
           <Route path="/about"  component={About}></Route>
           <Route path="/shop"  component={Shop}></Route>
+          {/* <Route path="/region" component={Region}></Route> */}
         </Switch>
         {/* <p className="App-intro">{this.state.apiResponse}</p> */}
       </div>

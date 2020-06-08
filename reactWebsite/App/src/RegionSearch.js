@@ -20,11 +20,15 @@ class RegionSearch extends React.Component {
         //     .catch()
         // console.log(data);
         //take out  alert() and in with routing
+
         this.callAPI(this.state.value, function(data){
-            alert(data)
-        } )
-        
+            
+            // alert(data)
+        } 
+        )
+        // this.props.history.push('/thank-you');
         event.preventDefault();
+        
     }
 
     // componentWillMount() {
@@ -83,9 +87,9 @@ class RegionSearch extends React.Component {
     render () {
         return(
             <form onSubmit={this.handleSubmit}>
-                <input type="text" value={this.state.value} name="search" placeholder="search region"
+                <input type="text" value={this.state.value} name="region" placeholder="search region..."
                 onChange={this.handleChange}/>
-                <button>Search</button>
+                <input type="submit" value="Search" />
             </form>
         )
     }
