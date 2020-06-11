@@ -1,8 +1,8 @@
 var express = require("express");
 var router = express.Router();
 var fetch = require("node-fetch");
-var request = require('request')
-var leagueToken = "RGAPI-832f88e8-d3ab-45e7-b1be-e05d11e7fc8c"
+// var request = require('request')
+// var leagueToken = "RGAPI-832f88e8-d3ab-45e7-b1be-e05d11e7fc8c"
 
 router.get('/', function(req, res, next) {
     lastGame(function(last) {
@@ -12,15 +12,18 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/region/:regionName', function(req, res, next){
-  console.log("this is the regionName param: " + req.params.regionName)
+  console.log("regionName param: " + req.params.regionName)
                             // getRegion(req.body.region, function(regionInfo){
       // WORKS FOR BODY//   res.send(regionInfo)                             
                          // return;
                             // })
   getRegion(req.params.regionName, function(regionInfo){
-    
+
+    if(regionInfo.message != undefined && regionInfo.message == "Region does not exist"){
+      console.log("this is the regionInfo: " + regionInfo)
+      res.status(404)
+    }
     res.send(regionInfo)
-    console.log("callback successful")
     return;
   })
 });
@@ -28,25 +31,27 @@ router.get('/region/:regionName', function(req, res, next){
 
 async function getRegion(regionString, callback){
   const response = await fetch('https://api.quarantine.country/api/v1/spots/region?region=' + regionString);
-  
-  if (!response.status.ok){
-    console.log("its ok")
+  if (response.status >= 200 & response.status < 300){
     const items = await response.json()  // this is used to extract the body from the request
     //const items = await response;
     const dates = items.data;
     // console.log(dates);
     let a = JSON.stringify(dates)
-    console.log("go to callback");
+    // console.log("go to callback");
     callback(dates);
     return
     // console.log(response)
   }
   else{
-    console.log("its not ok")
+    if((response.status) == 404){
+      callback({message: "Region does not exist"})
+      return;
+    }
     
     // console.log(response)
   }
-  callback(response.status)
+  callback("something went wrong")
+  return;
 }
 
 function lastGame(callback){

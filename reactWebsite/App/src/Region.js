@@ -19,11 +19,16 @@ class Region extends React.Component {
     async callAPI(regionName, callback) {
         console.log("this is the regionName: " + regionName);
         console.log("starting to fetch");
-        const dates = await fetch("http://localhost:9000/testAPI/region" + "/" + regionName);
-        console.log("this is the REGION: " + regionName) ;  
-        const items = await dates.json();
-        console.log(items);
-        let stringValue = JSON.stringify(items);
+        const data = await fetch("http://localhost:9000/testAPI/region" + "/" + regionName);
+        console.log("this is the REGION: " + regionName);
+        const dates = await data.json();
+        if (data.status >= 400){
+            this.setState({value: dates.message})
+            callback(this.state.value)
+            return;
+        }
+        console.log(dates );
+        let stringValue = JSON.stringify(dates);
         this.setState({value: stringValue})
         callback(this.state.value)
         return;
