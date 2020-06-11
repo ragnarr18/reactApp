@@ -1,9 +1,9 @@
 import React from 'react';
-
+import SingleRegion from './SingleRegion';
 class Region extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = {value: '', dateA: 0, dateB: 1, dataAvailable: false};
     }
 
     componentDidMount(){
@@ -11,7 +11,7 @@ class Region extends React.Component {
         this.state.value = query.get("region")
         console.log("this is the state value: " + this.state.value)
         this.callAPI(this.state.value, function(data){
-           // alert(data)
+            return data
         })
     }
 
@@ -27,9 +27,9 @@ class Region extends React.Component {
             callback(this.state.value)
             return;
         }
-        console.log(dates );
-        let stringValue = JSON.stringify(dates);
-        this.setState({value: stringValue})
+        this.state.dates = dates
+        this.state.dataAvailable = true
+        this.setState({value: dates, dataAvailable: true })
         callback(this.state.value)
         return;
     }
@@ -37,11 +37,13 @@ class Region extends React.Component {
 render (){
     return(
         <div>
-            {console.log(this.props.location.search)}
-            My data
+            {/* {console.log(this.props.location.search)} */}
+            <h1>My reagion search page</h1>
             <div id="regionData">
-                {console.log(this.state.value)}
-                {this.state.value}
+                {console.log("region: " + this.state.value)}
+                {/* {this.state.value} */}
+                {this.state.dataAvailable ? <div> <SingleRegion dates={this.state.dates} position={0}></SingleRegion> <SingleRegion dates={this.state.dates} position={1}></SingleRegion> </div> : <div></div>
+                }
             </div>
         </div>
         );

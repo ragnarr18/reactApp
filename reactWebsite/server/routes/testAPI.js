@@ -1,8 +1,6 @@
 var express = require("express");
 var router = express.Router();
 var fetch = require("node-fetch");
-// var request = require('request')
-// var leagueToken = "RGAPI-832f88e8-d3ab-45e7-b1be-e05d11e7fc8c"
 
 router.get('/', function(req, res, next) {
     lastGame(function(last) {
@@ -33,27 +31,23 @@ async function getRegion(regionString, callback){
   const response = await fetch('https://api.quarantine.country/api/v1/spots/region?region=' + regionString);
   if (response.status >= 200 & response.status < 300){
     const items = await response.json()  // this is used to extract the body from the request
-    //const items = await response;
     const dates = items.data;
-    // console.log(dates);
     let a = JSON.stringify(dates)
-    // console.log("go to callback");
     callback(dates);
     return
-    // console.log(response)
   }
   else{
     if((response.status) == 404){
       callback({message: "Region does not exist"})
       return;
     }
-    
-    // console.log(response)
   }
   callback("something went wrong")
   return;
 }
 
+
+// part of an old project
 function lastGame(callback){
     var summoner = "ih8myx"
     var customRequest = {
