@@ -67,29 +67,44 @@ class Region extends React.Component {
 
     leftButtonA(){
         if (this.state.dateIndexA + 1 < this.state.dateIndexB){
-            this.setState({dateIndexA: this.state.dateIndexA +1})
+            this.state.dateIndexA +=1;
+            let newIndex = this.state.dateIndexA;
+            this.getDateA();
+            this.setState({dateIndexA: newIndex})
+            // console.log("the state inleftbutton: " + this.state)
         }
+        return;
     }
 
     rightButtonA(){
-        if(this.state.dateIndexA > 0 & this.state.dateIndexA < this.state.dateIndexB)
-        this.setState({dateIndexA:  this.state.dateIndexA -=1})
-        // console.log("this is the state of the region: " + this.state)
-        
+        if(this.state.dateIndexA > 0 && this.state.dateIndexA < this.state.dateIndexB){
+            this.state.dateIndexA -= 1;
+            let newIndex = this.state.dateIndexA;
+            this.getDateA()
+            this.setState({dateIndexA: newIndex})
+        }
+        return;
     }
 
     leftButtonB(){
         let len = Object.keys(this.state.dates).length;
         if (this.state.dateIndexB < len){
-            this.setState({dateIndexB: this.state.dateIndexB +1})
+            this.state.dateIndexB += 1
+            let newIndex = this.state.dateIndexB;
+            this.getDateB() 
+            this.setState({dateIndexB: newIndex})
         }
-        
+        return;
     }
 
     rightButtonB(){
-        
-        if (this.state.dateIndexB -1 > this.state.dateIndexA)
-        this.setState({dateIndexB: this.state.dateIndexB -1})
+        if (this.state.dateIndexB -1 > this.state.dateIndexA) {
+            this.state.dateIndexB -=1;
+            let newIndex = this.state.dateIndexB;
+            this.getDateB();
+            this.setState({dateIndexB: newIndex})
+        }
+        return;
     }
 
 render (){
@@ -101,16 +116,17 @@ render (){
                 {/* {this.state.value} */}
                 {this.state.dataAvailable ? 
                     <div className="bundle">
-                    <div>
+                    <div className="SingleRegionContainer">
                     <SingleRegion ref={this.SingleRegionaA} date={this.state.dataA}></SingleRegion>
                     {/* <SingleRegion ref={this.SingleRegionaA} dates={this.state.dates} position={this.state.dateIndexA}></SingleRegion> */}
                     <button onClick={this.leftButtonA.bind(this)}>Day before</button>
                     <button onClick={this.rightButtonA.bind(this)}>Day after</button>
                     </div>
 
-                    <div>
+                    <div className="SingleRegionContainer">
                     
                     {/* <SingleRegion ref={this.SingleRegionaB} dates={this.state.dates} position={this.state.dateIndexB}></SingleRegion> */}
+                    <SingleRegion ref={this.SingleRegionaB} date={this.state.dataB}></SingleRegion>
                     <button onClick={this.leftButtonB.bind(this)}>Day before</button>
                     <button onClick={this.rightButtonB.bind(this)}>Day after</button>
                     </div>
