@@ -114,21 +114,27 @@ render (){
             <div id="regionData">
                 {/* {console.log("region: " + this.state.value)} */}
                 {/* {this.state.value} */}
-                {this.state.dataAvailable ? 
-                    <div className="bundle">
+                {this.state.dataAvailable ?
+
+                    <div className="RegionContainer">
+                    <div className="mainDataInfo">
+                        graphs and data go here 
+                    </div>
+
+                    <div className="SingleRegionBundle">
                     <div className="SingleRegionContainer">
-                    <SingleRegion ref={this.SingleRegionaA} date={this.state.dataA}></SingleRegion>
-                    {/* <SingleRegion ref={this.SingleRegionaA} dates={this.state.dates} position={this.state.dateIndexA}></SingleRegion> */}
-                    <button onClick={this.leftButtonA.bind(this)}>Day before</button>
-                    <button onClick={this.rightButtonA.bind(this)}>Day after</button>
+                        <SingleRegion ref={this.SingleRegionaA} date={this.state.dataA}></SingleRegion>
+                        {/* <SingleRegion ref={this.SingleRegionaA} dates={this.state.dates} position={this.state.dateIndexA}></SingleRegion> */}
+                        <button onClick={this.leftButtonA.bind(this)}>Day before</button>
+                        <button onClick={this.rightButtonA.bind(this)}>Day after</button>
                     </div>
 
                     <div className="SingleRegionContainer">
-                    
-                    {/* <SingleRegion ref={this.SingleRegionaB} dates={this.state.dates} position={this.state.dateIndexB}></SingleRegion> */}
-                    <SingleRegion ref={this.SingleRegionaB} date={this.state.dataB}></SingleRegion>
-                    <button onClick={this.leftButtonB.bind(this)}>Day before</button>
-                    <button onClick={this.rightButtonB.bind(this)}>Day after</button>
+                        {/* <SingleRegion ref={this.SingleRegionaB} dates={this.state.dates} position={this.state.dateIndexB}></SingleRegion> */}
+                        <SingleRegion ref={this.SingleRegionaB} date={this.state.dataB}></SingleRegion>
+                        <button onClick={this.leftButtonB.bind(this)}>Day before</button>
+                        <button onClick={this.rightButtonB.bind(this)}>Day after</button>
+                    </div>
                     </div>
                 </div> 
                 : <div className="ErrorMsg">{this.state.errorMsg}</div>

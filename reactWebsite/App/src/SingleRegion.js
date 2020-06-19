@@ -63,18 +63,29 @@ class SingleRegion extends React.Component {
     }
 
 render (){
-    // the loop. it'll return array of react node.
-    let children = this.state.currentData.map((val) => {
-        return (
-          <p id={val.id}>{val.name}</p>
-        )
-      });
+    // the loop. it'll retur n array of react node.
+    let deathPercentage = parseFloat(this.state.currentData.death_ratio) * 100;
+    deathPercentage =  deathPercentage.toFixed(3) 
+    console.log(deathPercentage)
+
+    let recoverdPercentage = parseFloat(this.state.currentData.recovery_ratio) * 100;
+    recoverdPercentage =  recoverdPercentage.toFixed(3)  
+    console.log(recoverdPercentage)
+    
+      
+    
     return(
         <div className="SingleRegion">
-            <p>{this.state.currentDate}</p>
-            <div id="dataBox">{children}</div>
-            
-            {this.state.deaths}
+            <h6>{this.state.currentDate}</h6>
+        <div className="dataBox">
+    <div className="dataBoxItem">{this.state.currentData.total_cases} <div className="dataType">total cases</div></div>
+    <div className="dataBoxItem">{this.state.currentData.deaths}<div className="dataType">deaths</div> </div>
+    <div className="dataBoxItem">{this.state.currentData.recovered} <div className="dataType">recovered</div></div>
+    <div className="dataBoxItem">{this.state.currentData.critical} <div className="dataType">critical</div></div>
+    <div className="dataBoxItem">{deathPercentage + "%"}<div className="dataType">death ratio</div></div>
+    <div className="dataBoxItem">{recoverdPercentage + "%"} <div className="dataType">recovery ratio</div></div>
+        </div>
+        
         </div>
         );
 }

@@ -19,15 +19,72 @@ nav {
   
 }
 
-.SingleRegion {
-  background-color: red;
-  margin: 1rem;
-  border: 1rem;
-  padding: 1rem;
-  width: fit-content;
-  height: 25%;
+
+
+
+
+.RegionContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  
 }
 
+.mainDataInfo {
+  width: 75%;
+  /* height: 100%; */
+  background-color: blue;
+  visibility: visible;
+  
+}
+
+/* this is the SingleRegion CSS part */
+
+.SingleRegionBundle {
+  width: 18%;
+  text-align: center;
+  margin: 2%;
+  padding-left: 50px;
+  /* padding: 3%; */
+}
+
+.SingleRegionContainer {
+  margin: 5%;
+}
+
+.SingleRegion {
+  background-color: red;
+  
+  border: 1rem;
+  /* padding: 1rem; */
+  width: fit-content;
+  height: 25%;
+  margin-left: 5%;
+  margin-right: 0em;
+  margin-bottom: 2%;
+  
+}
+
+.dataBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.dataBoxItem {
+  padding: 1%;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 0 50%;
+  font-size: large;
+}
+
+.dataType {
+  font-size: small;
+}
 /* .bundle{
   background-color: ;
 } */
