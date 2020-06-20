@@ -24,7 +24,6 @@ class Region extends React.Component {
 
 
     async callAPI(regionName) {
-        //this.callback.bind(this)
         console.log("this is the regionName: " + regionName);
         console.log("starting to fetch");
         const data = await fetch("http://localhost:9000/testAPI/region" + "/" + regionName);

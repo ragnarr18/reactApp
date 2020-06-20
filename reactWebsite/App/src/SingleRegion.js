@@ -7,21 +7,7 @@ class SingleRegion extends React.Component {
         // this.clickLeft = this.clickLeft.bind(this);
     }
 
-    componentDidMount(){
-        // let date = this.props.date
-        // console.log("this is the single date: " , this.props.date)
-        // //let currentDate = Object.keys(dates)[this.props.position];
-        // //let currentData = dates[currentDate];
-        
-        // let currentDate = date.date
-        // delete date["date"];
-        // let currentData = date
-        // let deaths = currentData["deaths"];
-        // console.log("the deaths: " + deaths)
-        // currentData = JSON.stringify(currentData)
-        // // this.setState({currentDate: currentDate, currentData: currentData})
-        // this.setState({currentDate: currentDate, currentData: currentData, deaths: deaths})
-        // // console.log("this is the current: " + this.state.currentDate)
+    componentDidMount(){    	
         this.setUpDate();
     }
 

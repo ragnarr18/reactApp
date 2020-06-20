@@ -3,10 +3,8 @@ var router = express.Router();
 var fetch = require("node-fetch");
 
 router.get('/', function(req, res, next) {
-    lastGame(function(last) {
-        res.send(last);
-        return;
-      });
+    
+      res.send({res :"server up and running"})
 });
 
 router.get('/region/:regionName', function(req, res, next){
