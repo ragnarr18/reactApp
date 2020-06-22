@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     
-    "start": "concurrently \"node ./bin/www\" \"cd ../App && npm start\""
+    "start": "concurrently \"node ./bin/www\" \"cd ./App && npm start\""
   },
   "dependencies": {
     "concurrently": "^5.2.0",
