@@ -69,4 +69,4 @@ async function getRegion(regionString, callback){
 app.get('/*', (req, res) => {
   res.sendFile(path.resolve(__dirname, "client/build", "index.html"))
 })
-app.listen(port)
+app.listen(process.env.PORT || 5000)
