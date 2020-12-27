@@ -15,7 +15,7 @@ app.disable("x-powered-by")
 app.use(compression())
 app.use(morgan("common"))
 
-app.use(express.static(path.resolve(__dirname, "client/build")))
+app.use(express.static(path.resolve(__dirname, "frontend/build")))
 
 // }
 
@@ -26,14 +26,14 @@ if(dev){
 // const server = createServer(app)
 
 // app.get('/', function(req, res, next) {
-    
+
 //       res.send({res :"server up and running"})
 // });
 
 app.get('/region/:regionName', function(req, res, next){
   console.log("regionName param: " + req.params.regionName)
                             // getRegion(req.body.region, function(regionInfo){
-      // WORKS FOR BODY//   res.send(regionInfo)                             
+      // WORKS FOR BODY//   res.send(regionInfo)
                          // return;
                             // })
   getRegion(req.params.regionName, function(regionInfo){
@@ -67,6 +67,6 @@ async function getRegion(regionString, callback){
 }
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client/build", "index.html"))
+  res.sendFile(path.resolve(__dirname, "frontend/build", "index.html"))
 })
 app.listen(port)
