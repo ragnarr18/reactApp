@@ -1,9 +1,10 @@
 import React from 'react';
 import SingleRegion from './SingleRegion';
+import RegionForm from './RegionForm';
 class RegionSearch extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {dates: '', dateIndexA: 0, dateIndexB: 1, dataAvailable: false, dataA: "", dataB:""};
+        this.state = {title: 'Region does not exist', dates: '', dateIndexA: 0, dateIndexB: 1, dataAvailable: false, dataA: "", dataB:""};
         this.SingleRegionaA = React.createRef();
         this.SingleRegionaB = React.createRef();
     }
@@ -110,12 +111,13 @@ class RegionSearch extends React.Component {
 render (){
     return(
         <div>
-            <h1>My reagion search page</h1>
+            {/* <h1>My reagion search page</h1> */}
             <div id="regionData">
+            <h1 style={{ textTransform: 'uppercase'}} >{this.state.value}</h1>
                 {/* {console.log("region: " + this.state.value)} */}
                 {/* {this.state.value} */}
                 {this.state.dataAvailable ?
-
+                    
                     <div className="RegionContainer">
                     <div className="mainDataInfo">
                         graphs and data go here 
@@ -137,7 +139,10 @@ render (){
                     </div>
                     </div>
                 </div> 
-                : <div className="ErrorMsg">{this.state.errorMsg}</div>
+                : <div>
+                        <div className="ErrorMsg">{this.state.errorMsg}
+                        </div><RegionForm></RegionForm>
+                    </div>
                 }
             </div>
         </div>

@@ -14,6 +14,7 @@ import RegionSearch from './RegionSearch'
 
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import RegionForm from './RegionForm';
 //Route renders out a component based on the url
 // browserrouter = abiltiy to use routing
 
@@ -46,6 +47,8 @@ class App extends Component {
 const Home = () => (
   <div>
     <h1>Home Page</h1>
+    <p>Please type in a region and press 'Search' to see COVID-19 statistics!</p>
+    <RegionForm></RegionForm>
   </div>
 )
 

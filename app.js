@@ -11,17 +11,18 @@ const path = require("path")
 const dev = app.get("env") !== "production"
 
 console.log(dev);
-// if(!dev){
+if(!dev){
 app.disable("x-powered-by")
 app.use(compression())
 app.use(morgan("common"))
 
 app.use(express.static(path.resolve(__dirname, "client/build")))
 
-// }
+}
 
 if(dev){
   app.use(morgan("dev"))
+  // app.use(express.static(path.resolve(__dirname,"client/build")))
 }
 
 // const server = createServer(app)
