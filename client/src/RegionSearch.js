@@ -1,6 +1,8 @@
 import React from 'react';
 import SingleRegion from './SingleRegion';
 import RegionForm from './RegionForm';
+import Visualizer from './Visualizer';
+
 class RegionSearch extends React.Component {
     constructor(props) {
         super(props);
@@ -12,15 +14,7 @@ class RegionSearch extends React.Component {
     componentDidMount(){
         const query = new URLSearchParams(this.props.location.search);
         this.state.value = query.get("region")
-        // console.log("this is the state value: " + this.state.value)
-        // this.callAPI.bind(this);
-        
         this.callAPI(this.state.value)
-        // function (data){
-            // this.setState(data);
-            // return;
-        //}
-        //)
     }
 
 
@@ -120,7 +114,7 @@ render (){
                     
                     <div className="RegionContainer">
                     <div className="mainDataInfo">
-                        graphs and data go here 
+                        <Visualizer data={"somedata"} title={"sometitle"} color={"purple"}/>
                     </div>
 
                     <div className="SingleRegionBundle">
