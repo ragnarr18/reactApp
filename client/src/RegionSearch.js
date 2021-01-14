@@ -36,7 +36,7 @@ class RegionSearch extends React.Component {
         // this.state.dates = dates
         // this.state.dataAvailable = true
         this.setState({dataAvailable: true})
-        console.log("this is the state: " +  this.state)
+        console.log("this is the state: " +  this.state.dates["2021-01-14"])
         //callback({value: dates, dataAvailable: true })
         return;
     }
@@ -114,7 +114,7 @@ render (){
                     
                     <div className="RegionContainer">
                     <div className="mainDataInfo">
-                        <Visualizer data={"somedata"} title={"sometitle"} color={"purple"}/>
+                        <Visualizer data={this.state.dates} title={"sometitle"} color={"purple"}/>
                     </div>
 
                     <div className="SingleRegionBundle">
